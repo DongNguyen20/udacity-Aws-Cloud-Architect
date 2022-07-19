@@ -1,0 +1,16 @@
+- RTO(Recovery Time Objective) : how long to return to working state after a disaster.
+- RPO(Recovery Point Objective):  a measure of how frequently you take backups.
+1. Minimum RTO for a single AZ outage
+	In this case RTO is the time to complete the switch to a different AZ. Minimum 1 min - 2 mins.
+	
+2. Minimum RTO for a single region outage
+	+ Time to start up new RDS instance about 15-25 mins.
+	+ Time to apply all changes since the last backup about 20-35 mins 
+	Total take about 35 mins to 1 hour.
+
+3. Minimum RPO for a single AZ outage
+	This case automatic backups are enabled. ÁWS will take snapshot once/day.
+	You can view AWS log backups every 5 mins.
+	
+4. Minimum RPO for a single region outage
+	Minimum RPO for a single region outage is around 15 mins.

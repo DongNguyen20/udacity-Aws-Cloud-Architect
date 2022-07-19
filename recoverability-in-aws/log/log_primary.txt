@@ -1,0 +1,94 @@
+PS G:\udacity> ssh -i .\udkey.pem ec2-user@3.239.173.89
+The authenticity of host '3.239.173.89 (3.239.173.89)' can't be established.
+ECDSA key fingerprint is SHA256:dO88wTPHLoNVCmhonNgdRIZUgoSZaoaOCNmo0JLxIow.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '3.239.173.89' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+5 package(s) needed for security, out of 14 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-10-1-10-96 ~]$ mysql -u admin -p -h udacity-primary.cngy9i8hyvk9.us-east-1.rds.amazonaws.com
+-bash: mysql: command not found
+[ec2-user@ip-10-1-10-96 ~]$ yum install mysql
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+You need to be root to perform this command.
+[ec2-user@ip-10-1-10-96 ~]$ sudo su -
+[root@ip-10-1-10-96 ~]#  yum install mysql
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+amzn2-core                                                                                       | 3.7 kB  00:00:00
+Resolving Dependencies
+--> Running transaction check
+---> Package mariadb.x86_64 1:5.5.68-1.amzn2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                  Arch                    Version                             Repository                   Size
+========================================================================================================================
+Installing:
+ mariadb                  x86_64                  1:5.5.68-1.amzn2                    amzn2-core                  8.8 M
+
+Transaction Summary
+========================================================================================================================
+Install  1 Package
+
+Total download size: 8.8 M
+Installed size: 49 M
+Is this ok [y/d/N]: y
+Downloading packages:
+mariadb-5.5.68-1.amzn2.x86_64.rpm                                                                | 8.8 MB  00:00:00
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:mariadb-5.5.68-1.amzn2.x86_64                                                                      1/1
+  Verifying  : 1:mariadb-5.5.68-1.amzn2.x86_64                                                                      1/1
+
+Installed:
+  mariadb.x86_64 1:5.5.68-1.amzn2
+
+Complete!
+[root@ip-10-1-10-96 ~]# mysql -u admin -p -h udacity-primary.cngy9i8hyvk9.us-east-1.rds.amazonaws.com
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.01 sec)
+
+MySQL [(none)]> use udacity
+Database changed
+MySQL [udacity]> CREATE TABLE user(id INT NOT NULL AUTO_INCREMENT, name VARCHAR(100) NOT NULL, PRIMARY KEY (id));
+Query OK, 0 rows affected (0.06 sec)
+
+MySQL [udacity]> INSERT into user(id, name) VALUES (10, "Dong Nguyen");
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> SELECT * FROM user;
++----+-------------+
+| id | name        |
++----+-------------+
+| 10 | Dong Nguyen |
++----+-------------+
+1 row in set (0.00 sec)
+
+MySQL [udacity]>
