@@ -1,0 +1,8 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+- check VPC flow log is enable in all VPCs
+- check denial ingress from IP 0.0.0.0/0 port 22 in security group
+- VPC default SG should be closed
+- use AWS System Manager to manage EC2 instance.
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+- Enable VPC flow log
+- Encrypt EC2, S3 buckets

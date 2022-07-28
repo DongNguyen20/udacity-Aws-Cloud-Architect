@@ -1,0 +1,7 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- Disable SSH login with password into web service instance
+- Set stronger password.
+- Change configuration of security group to prevent ssh connection from any IP in the internet
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+- Use KMS key for S3 bucket and allow only specific subnet to access.

@@ -1,0 +1,6 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+	IAM Role can access to many s3 bucket instances. Should only have access to specific buckets with a designated role.
+# Poor practice 2
+	In configure file (c3-app.yml) defines CidrIp 0.0.0.0/0 that if hacker can infiltrate the subnet then can tranfer information to any IP address.

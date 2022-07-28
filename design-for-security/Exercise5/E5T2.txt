@@ -1,0 +1,15 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+- Tools: Regula, Cfripper, Terrascan.
+### Example vulnerability
+- simple security group, missing encryption. 
+##Scan AMI’s or containers for OS vulnerabilities
+- Tools: Clair, Trivy
+### Example vulnerability
+- detect malwares, scan containers images for OS.
+##Scan an AWS environment for cloud configuration vulnerabilities
+- Tools: AWS Config, AWS GuardDuty, AWS Inspector
+### Example vulnerability
+- detect configuration vulnerabilities in AWS resource
+- detect known vulnerabilities in AWS resource
